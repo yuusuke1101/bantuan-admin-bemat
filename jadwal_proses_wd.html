@@ -40,6 +40,13 @@
 
         .session {
             font-weight: bold;
+        }
+
+        .session-1 {
+            color: red;
+        }
+
+        .session-2 {
             color: green;
         }
 
@@ -73,7 +80,7 @@
         <div class="status">3. Status: <span id="withdrawStatus"></span></div>
         <div class="session">4. Sesi: <span id="currentSession"></span></div>
         <div class="note">Catatan: Apabila wd siang hari maka bisa diproses di sesi ke-2, dan apabila permintaan wd pada malam hari maka diproses keesokan harinya di sesi ke-1.</div>
-        <div class="bank-info">* Apabila sampai sesi selesai dana belum masuk, harap cek rekening Bank <span style="font-style: italic;">MIRING</span>.</div>
+        <div class="bank-info">* Apabila sampai sesi selesai dana belum masuk, harap cek rekening Bank 1 <span style="font-style: italic;"></span>.</div>
     </div>
 
     <script>
@@ -97,13 +104,13 @@
         if (currentDay >= 1 && currentDay <= 6) { // Hari Senin hingga Sabtu
             if ((currentHour >= 13 && currentHour < 15) || (currentHour >= 17 && currentHour < 21)) {
                 status = "Sedang Diproses";
-                session = "Sesi 2";
+                session = "Sesi Ke-2";
             } else if ((currentHour >= 15 && currentHour < 17) || (currentHour >= 21 && currentHour < 24) || (currentHour >= 0 && currentHour < 1)) {
                 status = "Belum Dimulai";
-                session = "Sesi 1";
+                session = "Sesi Ke-1";
             } else {
                 status = "Belum Diproses";
-                session = "Sesi 1";
+                session = "Sesi Ke-1";
             }
         }
 
@@ -116,6 +123,13 @@
             document.getElementById("withdrawStatus").classList.add("in-process");
         } else {
             document.getElementById("withdrawStatus").classList.add("not-processed");
+        }
+
+        // Beri warna sesuai sesi
+        if (session === "Sesi Ke-1") {
+            document.getElementById("currentSession").classList.add("session-1");
+        } else if (session === "Sesi Ke-2") {
+            document.getElementById("currentSession").classList.add("session-2");
         }
     </script>
 </body>

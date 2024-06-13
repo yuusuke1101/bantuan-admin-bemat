@@ -18,6 +18,7 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: #fff;
+            position: relative;
         }
         h1 {
             text-align: center;
@@ -55,17 +56,29 @@
         .button:hover {
             background-color: #0056b3;
         }
+        /* Styles for the clock */
+        #clock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #555;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div id="clock"></div>
         <h1 id="greeting">Selamat Datang di Halaman Admin Mitra</h1>
         <h2 class="header">Menu Admin Mitra</h2>
         <ul class="menu">
             <li><a href="https://whatsform.com/Y5YT5P" class="button">Edit Data Akun Mitra</a></li>
             <li><a href="https://whatsform.com/Yqt3Lr" class="button">Edit Data Warung</a></li>
-            <li><a href=" https://whatsform.com/oevalk
-" class="button">Pengajuan Pendaftaran Warung</a></li>
+            <li><a href="https://whatsform.com/oevalk" class="button">Pengajuan Pendaftaran Warung</a></li>
             <li><a href="ubah_password.html" class="button">pengajuan ubah Password Akun</a></li>
             <li><a href="kirim_ulang_notifikasi.html" class="button">Kirim Ulang Notifikasi Detail Akun</a></li>
             <li><a href="lupa_pin_password.html" class="button">Lupa Password akun mitra</a></li>
@@ -83,19 +96,45 @@
 
     <script>
         var greeting = document.getElementById('greeting');
-        var time = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta', hour: 'numeric' });
+        var clock = document.getElementById('clock');
+        var intervalID;
 
-        if (time >= 0 && time < 4) {
-            greeting.textContent = "Selamat Malam Mitra Bemat di dashboard menu bantuan admin";
-        } else if (time >= 4 && time < 10) {
-            greeting.textContent = "Selamat Pagi Mitra Bemat di dashboard menu bantuan admin";
-        } else if (time >= 10 && time < 14) {
-            greeting.textContent = "Selamat Siang Mitra Bemat di dashboard menu bantuan admin";
-        } else if (time >= 14 && time < 19) {
-            greeting.textContent = "Selamat Sore Mitra Bemat di dashboard menu bantuan admin";
-        } else {
-            greeting.textContent = "Selamat Malam Mitra Bemat di dashboard menu bantuan admin";
+        function updateTime() {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+
+            // Add leading zeros if necessary
+            hours = (hours < 10 ? "0" : "") + hours;
+            minutes = (minutes < 10 ? "0" : "") + minutes;
+            seconds = (seconds < 10 ? "0" : "") + seconds;
+
+            // Format the time
+            var formattedTime = hours + ":" + minutes + ":" + seconds;
+
+            // Update the clock
+            clock.textContent = formattedTime;
+
+            // Determine greeting based on time
+            if (hours >= 0 && hours < 4) {
+                greeting.textContent = "Selamat Malam Mitra Bemat di dashboard menu bantuan admin";
+            } else if (hours >= 4 && hours < 10) {
+                greeting.textContent = "Selamat Pagi Mitra Bemat di dashboard menu bantuan admin";
+            } else if (hours >= 10 && hours < 14) {
+                greeting.textContent = "Selamat Siang Mitra Bemat di dashboard menu bantuan admin";
+            } else if (hours >= 14 && hours < 19) {
+                greeting.textContent = "Selamat Sore Mitra Bemat di dashboard menu bantuan admin";
+            } else {
+                greeting.textContent = "Selamat Malam Mitra Bemat di dashboard menu bantuan admin";
+            }
         }
+
+        // Update time every second
+        intervalID = setInterval(updateTime, 1000);
+
+        // Call updateTime initially to set the clock and greeting
+        updateTime();
     </script>
 </body>
 </html>

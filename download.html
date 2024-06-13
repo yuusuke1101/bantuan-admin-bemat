@@ -14,7 +14,6 @@
             height: 100vh;
             margin: 0;
         }
-
         .container {
             background-color: #fff;
             padding: 20px;
@@ -22,15 +21,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-
         h1 {
             color: #333;
             margin-bottom: 20px;
         }
-
         .button {
-            display: inline-block;
-            padding: 15px 30px;
+            display: block;
+            padding: 15px;
             font-size: 18px;
             background-color: #007bff;
             color: #fff;
@@ -38,38 +35,26 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 15px;
             transition: background-color 0.3s ease;
         }
-
         .button:hover {
             background-color: #0056b3;
         }
-
-        .button + .button {
-            margin-left: 20px;
+        .back-button {
+            background-color: #6c757d;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Download Aplikasi Bemat</h1>
-        <a href="#" class="button" onclick="downloadOfficial()">Download Aplikasi Bemat (Official)</a>
-        
-        <a href="#" class="button" onclick="downloadAlternate()">Download Aplikasi Bemat (Alternate)</a>
+        <a href="https://play.google.com/store/apps/details?id=com.bemat.langitindoniaga" class="button">Download Aplikasi Bemat (Official)</a>
+        <a href="https://apk.e-droid.net/apk/app2856054-1xjdma.apk?v=2" class="button">Download Aplikasi Bemat (Alternate)</a>
+        <a href="index.html" class="button back-button">Kembali ke Halaman Utama</a>
     </div>
-
-    <script>
-        function downloadOfficial() {
-            // Ganti URL dengan URL resmi untuk mengunduh aplikasi Bemat
-            var url = "https://play.google.com/store/apps/details?id=com.bemat.langitindoniaga";
-            window.open(url, '_blank');
-        }
-
-        function downloadAlternate() {
-            // Ganti URL dengan URL alternatif untuk mengunduh aplikasi Bemat
-            var url = "https://apk.e-droid.net/apk/app2856054-1xjdma.apk?v=2";
-            window.open(url, '_blank');
-        }
-    </script>
 </body>
 </html>

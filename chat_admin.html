@@ -60,34 +60,24 @@
 <body>
     <div class="container">
         <div class="form-box">
-            <h2>WhatsApp ke Admin Bemat</h2>
-            <form id="bematForm" onsubmit="sendToWhatsAppBemat(); return false;">
-                <label for="bematMessage">Pesan:</label>
-                <input type="text" id="bematMessage" name="bematMessage" required>
-                <button type="submit">Kirim</button>
-            </form>
-        </div>
-        <div class="form-box">
-            <h2>WhatsApp ke Admin PPOB</h2>
-            <form id="ppobForm" onsubmit="sendToWhatsAppPPOB(); return false;">
-                <label for="ppobMessage">Pesan:</label>
-                <input type="text" id="ppobMessage" name="ppobMessage" required>
+            <h2>Pilih Admin</h2>
+            <select id="adminSelection">
+                <option value="BEMAT">Admin Bemat</option>
+                <option value="PPOB">Admin PPOB</option>
+            </select>
+            <h2>Pesan:</h2>
+            <form id="messageForm" onsubmit="sendToWhatsApp(); return false;">
+                <input type="text" id="message" name="message" required>
                 <button type="submit">Kirim</button>
             </form>
         </div>
     </div>
 
     <script>
-        function sendToWhatsAppBemat() {
-            var message = document.getElementById("bematMessage").value;
-            var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
-            var url =  `https://wa.me/${phoneNumber}?text=${message}`;
-            window.open(url, '_blank');
-        }
-
-        function sendToWhatsAppPPOB() {
-            var message = document.getElementById("ppobMessage").value;
-            var phoneNumber = "6282385954211"; // Prefix Indonesia: +62
+        function sendToWhatsApp() {
+            var message = document.getElementById("message").value;
+            var admin = document.getElementById("adminSelection").value;
+            var phoneNumber = admin === "BEMAT" ? "6283166570663" : "6282385954211";
             var url =  `https://wa.me/${phoneNumber}?text=${message}`;
             window.open(url, '_blank');
         }

@@ -68,7 +68,7 @@
         function sendToWhatsApp() {
             var username = document.getElementById("username").value;
             var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
-            var message = 'Username Akun: ${username};
+            var message = `Username Akun: ${username}`;
             var url =  `https://wa.me/${phoneNumber}?text=${message}`;
             window.open(url, '_blank');
         }

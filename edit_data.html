@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pengajuan Edit Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Formulir Pengajuan Edit Data</h2>
+        <form id="editDataForm" onsubmit="sendToWhatsApp(); return false;">
+            <label for="username">Username Akun:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="namaPemilik">Nama Pemilik:</label>
+            <input type="text" id="namaPemilik" name="namaPemilik" required>
+
+            <label for="noWhatsapp">Nomor Whatsapp:</label>
+            <input type="tel" id="noWhatsapp" name="noWhatsapp" required>
+
+            <label for="nik">NIK:</label>
+            <input type="text" id="nik" name="nik" required>
+
+            <label for="namaBank">Nama Bank (Withdraw):</label>
+            <input type="text" id="namaBank" name="namaBank" required>
+
+            <label for="noRekening">Nomor Rekening:</label>
+            <input type="number" id="noRekening" name="noRekening" required>
+
+            <label for="atasNama">Nama Pemilik Rekening:</label>
+            <input type="text" id="atasNama" name="atasNama" required>
+
+            <label for="akunPengembalian">Akun Pengembalian - Username:</label>
+            <input type="text" id="akunPengembalian" name="akunPengembalian" required>
+
+            <label for="namaPemilikPengembalian">Akun Pengembalian - Nama Pemilik:</label>
+            <input type="text" id="namaPemilikPengembalian" name="namaPemilikPengembalian" required>
+            
+            <button type="submit">Kirim</button>
+        </form>
+    </div>
+
+    <script>
+        function sendToWhatsApp() {
+            var username = document.getElementById("username").value;
+            var namaPemilik = document.getElementById("namaPemilik").value;
+            var noWhatsapp = document.getElementById("noWhatsapp").value;
+            var nik = document.getElementById("nik").value;
+            var namaBank = document.getElementById("namaBank").value;
+            var noRekening = document.getElementById("noRekening").value;
+            var atasNama = document.getElementById("atasNama").value;
+            var akunPengembalian = document.getElementById("akunPengembalian").value;
+            var namaPemilikPengembalian = document.getElementById("namaPemilikPengembalian").value;
+
+            var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
+            var message = `*Pengajuan Edit Data* %0A*Username Akun*: ${username} %0A*Nama Pemilik*: ${namaPemilik} %0A*No. Whatsapp*: ${noWhatsapp} %0A*NIK*: ${nik} %0A*Nama Bank*: ${namaBank} %0A*No. Rekening*: ${noRekening} %0A*Atas Nama*: ${atasNama} %0A*Akun Pengembalian - Username*: ${akunPengembalian} %0A*Akun Pengembalian - Nama Pemilik*: ${namaPemilikPengembalian}`;
+            var url =  `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

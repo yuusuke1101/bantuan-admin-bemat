@@ -81,15 +81,15 @@
         function sendToWhatsAppBemat() {
             var message = document.getElementById("bematMessage").value;
             var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
-            var url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
-            window.location.href = url;
+            var url =  `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(url, '_blank');
         }
 
         function sendToWhatsAppPPOB() {
             var message = document.getElementById("ppobMessage").value;
             var phoneNumber = "6282385954211"; // Prefix Indonesia: +62
-            var url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
-            window.location.href = url;
+            var url =  `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(url, '_blank');
         }
     </script>
 </body>

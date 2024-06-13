@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Aplikasi Bemat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button + .button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Download Aplikasi Bemat</h1>
+        <a href="#" class="button" onclick="downloadOfficial()">Download Aplikasi Bemat (Official)</a>
+        <a href="#" class="button" onclick="downloadAlternate()">Download Aplikasi Bemat (Alternate)</a>
+    </div>
+
+    <script>
+        function downloadOfficial() {
+            // Ganti URL dengan URL resmi untuk mengunduh aplikasi Bemat
+            var url = "https://play.google.com/store/apps/details?id=com.bemat.langitindoniaga";
+            window.open(url, '_blank');
+        }
+
+        function downloadAlternate() {
+            // Ganti URL dengan URL alternatif untuk mengunduh aplikasi Bemat
+            var url = "https://apk.e-droid.net/apk/app2856054-1xjdma.apk?v=2";
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

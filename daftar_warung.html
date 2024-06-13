@@ -110,32 +110,35 @@
         }
 
         function sendToWhatsApp() {
-            var usernameSponsor = document.getElementById("usernameSponsor").value;
-            var banner = document.getElementById("banner").value;
-            var namaPemilik = document.getElementById("namaPemilik").value;
-            var noWhatsapp = document.getElementById("noWhatsapp").value;
-            var provinsi = document.getElementById("provinsi").value;
-            var kabupaten = document.getElementById("kabupaten").value;
-            var kecamatan = document.getElementById("kecamatan").value;
-            var kelurahan = document.getElementById("kelurahan").value;
-            var alamat = document.getElementById("alamat").value;
-            var jenisWarung = document.getElementById("jenisWarung").value;
-            var lainnya = document.getElementById("lainnya").value;
+            var confirmation = confirm("Apakah Anda yakin ingin mengirimkan formulir?");
+            if (confirmation) {
+                var usernameSponsor = document.getElementById("usernameSponsor").value;
+                var banner = document.getElementById("banner").value;
+                var namaPemilik = document.getElementById("namaPemilik").value;
+                var noWhatsapp = document.getElementById("noWhatsapp").value;
+                var provinsi = document.getElementById("provinsi").value;
+                var kabupaten = document.getElementById("kabupaten").value;
+                var kecamatan = document.getElementById("kecamatan").value;
+                var kelurahan = document.getElementById("kelurahan").value;
+                var alamat = document.getElementById("alamat").value;
+                var jenisWarung = document.getElementById("jenisWarung").value;
+                var lainnya = document.getElementById("lainnya").value;
 
-            // Validasi jika jenis warung dipilih sebagai "lainnya", maka textbox lainnya harus diisi
-            if (jenisWarung === "lainnya" && lainnya.trim() === "") {
-                alert("Mohon isi jenis warung lainnya!");
-                return; // Stop proses pengiriman formulir jika validasi tidak terpenuhi
+                // Validasi jika jenis warung dipilih sebagai "lainnya", maka textbox lainnya harus diisi
+                if (jenisWarung === "lainnya" && lainnya.trim() === "") {
+                    alert("Mohon isi jenis warung lainnya!");
+                    return; // Stop proses pengiriman formulir jika validasi tidak terpenuhi
+                }
+
+                if (jenisWarung === "lainnya") {
+                    jenisWarung = lainnya;
+                }
+
+                var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
+                var message = `*Pengajuan Daftar Warung Poin Bemat* %0A*Username Sponsor*: ${usernameSponsor} %0A*Memakai Banner*: ${banner === "memakai" ? "Ya" : "Tidak"} %0A*Nama Pemilik Warung*: ${namaPemilik} %0A*Nomor Whatsapp*: ${noWhatsapp} %0A*Alamat*: ${alamat}, ${kelurahan}, ${kecamatan}, ${kabupaten}, ${provinsi} %0A*Jenis Warung*: ${jenisWarung}`;
+                var url =  `https://wa.me/${phoneNumber}?text=${message}`;
+                window.open(url, '_blank');
             }
-
-            if (jenisWarung === "lainnya") {
-                jenisWarung = lainnya;
-            }
-
-            var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
-            var message = `*Pengajuan Daftar Warung Poin Bemat* %0A*Username Sponsor*: ${usernameSponsor} %0A*Memakai Banner*: ${banner === "memakai" ? "Ya" : "Tidak"} %0A*Nama Pemilik Warung*: ${namaPemilik} %0A*Nomor Whatsapp*: ${noWhatsapp} %0A*Alamat*: ${alamat}, ${kelurahan}, ${kecamatan}, ${kabupaten}, ${provinsi} %0A*Jenis Warung*: ${jenisWarung}`;
-            var url =  `https://wa.me/${phoneNumber}?text=${message}`;
-            window.open(url, '_blank');
         }
     </script>
 </body>

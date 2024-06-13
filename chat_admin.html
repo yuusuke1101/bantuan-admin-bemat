@@ -82,14 +82,14 @@
             var message = document.getElementById("bematMessage").value;
             var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
             var url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
-            window.open(url, '_blank');
+            window.location.href = url;
         }
 
         function sendToWhatsAppPPOB() {
             var message = document.getElementById("ppobMessage").value;
             var phoneNumber = "6282385954211"; // Prefix Indonesia: +62
             var url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
-            window.open(url, '_blank');
+            window.location.href = url;
         }
     </script>
 </body>

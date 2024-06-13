@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir WhatsApp ke Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .form-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .form-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-box label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-box button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>WhatsApp ke Admin Bemat</h2>
+            <form id="bematForm" onsubmit="sendToWhatsAppBemat(); return false;">
+                <label for="bematMessage">Pesan:</label>
+                <input type="text" id="bematMessage" name="bematMessage" required>
+                <button type="submit">Kirim</button>
+            </form>
+        </div>
+        <div class="form-box">
+            <h2>WhatsApp ke Admin PPOB</h2>
+            <form id="ppobForm" onsubmit="sendToWhatsAppPPOB(); return false;">
+                <label for="ppobMessage">Pesan:</label>
+                <input type="text" id="ppobMessage" name="ppobMessage" required>
+                <button type="submit">Kirim</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function sendToWhatsAppBemat() {
+            var message = document.getElementById("bematMessage").value;
+            var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
+            var url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+            window.open(url, '_blank');
+        }
+
+        function sendToWhatsAppPPOB() {
+            var message = document.getElementById("ppobMessage").value;
+            var phoneNumber = "6282385954211"; // Prefix Indonesia: +62
+            var url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

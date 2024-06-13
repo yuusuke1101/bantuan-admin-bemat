@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pengajuan Daftar Warung Poin Bemat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .container input,
+        .container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pengajuan Daftar Warung Poin Bemat</h2>
+        <form id="daftarWarungForm" onsubmit="sendToWhatsApp(); return false;">
+            <label for="usernameSponsor">Username Sponsor:</label>
+            <input type="text" id="usernameSponsor" name="usernameSponsor" required>
+
+            <label for="banner">Memakai Banner:</label>
+            <select id="banner" name="banner" required>
+                <option value="memakai">pakai banner (Rp. 200.000)</option>
+                <option value="tidak_memakai">Tidak Memakai banner (Rp. 150.000)</option>
+            </select>
+
+            <label for="namaPemilik">Nama Pemilik Warung:</label>
+            <input type="text" id="namaPemilik" name="namaPemilik" required>
+
+            <label for="noWhatsapp">Nomor Whatsapp:</label>
+            <input type="tel" id="noWhatsapp" name="noWhatsapp" required>
+
+            <label for="provinsi">Provinsi:</label>
+            <input type="text" id="provinsi" name="provinsi" required>
+
+            <label for="kabupaten">Kabupaten:</label>
+            <input type="text" id="kabupaten" name="kabupaten" required>
+
+            <label for="kecamatan">Kecamatan:</label>
+            <input type="text" id="kecamatan" name="kecamatan" required>
+
+            <label for="kelurahan">Kelurahan/Desa:</label>
+            <input type="text" id="kelurahan" name="kelurahan" required>
+
+            <label for="alamat">Alamat Lengkap:</label>
+            <input type="text" id="alamat" name="alamat" required>
+
+            <label for="jenisWarung">Jenis Warung:</label>
+            <select id="jenisWarung" name="jenisWarung" onchange="showOther()">
+                <option value="sembako">Sembako</option>
+                <option value="elektronik">Elektronik</option>
+                <option value="rumah_makan">Rumah Makan</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" id="lainnya" name="lainnya" placeholder="Jenis Warung Lainnya" style="display:none;">
+
+            <button type="submit">Kirim</button>
+        </form>
+    </div>
+
+    <script>
+        function showOther() {
+            var jenisWarung = document.getElementById("jenisWarung");
+            var lainnya = document.getElementById("lainnya");
+            lainnya.style.display = jenisWarung.value === "lainnya" ? "block" : "none";
+        }
+
+        function sendToWhatsApp() {
+            var usernameSponsor = document.getElementById("usernameSponsor").value;
+            var banner = document.getElementById("banner").value;
+            var namaPemilik = document.getElementById("namaPemilik").value;
+            var noWhatsapp = document.getElementById("noWhatsapp").value;
+            var provinsi = document.getElementById("provinsi").value;
+            var kabupaten = document.getElementById("kabupaten").value;
+            var kecamatan = document.getElementById("kecamatan").value;
+            var kelurahan = document.getElementById("kelurahan").value;
+            var alamat = document.getElementById("alamat").value;
+            var jenisWarung = document.getElementById("jenisWarung").value;
+            var lainnya = document.getElementById("lainnya").value;
+
+            if (jenisWarung === "lainnya") {
+                jenisWarung = lainnya;
+            }
+
+            var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
+            var message = `*Pengajuan Daftar Warung Poin Bemat* %0A*Username Sponsor*: ${usernameSponsor} %0A*Memakai Banner*: ${banner === "memakai" ? "Ya" : "Tidak"} %0A*Nama Pemilik Warung*: ${namaPemilik} %0A*Nomor Whatsapp*: ${noWhatsapp} %0A*Alamat*: ${alamat}, ${kelurahan}, ${kecamatan}, ${kabupaten}, ${provinsi} %0A*Jenis Warung*: ${jenisWarung}`;
+            var url =  `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

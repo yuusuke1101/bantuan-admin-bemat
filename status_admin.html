@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .container p {
+            margin-bottom: 10px;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .online {
+            color: green;
+        }
+        .offline, .libur {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Status Admin</h2>
+        <p id="tanggalHari"></p>
+        <p id="waktu"></p>
+        <p>Status Admin: <span id="statusAdmin"></span></p>
+        <p>Jam Kerja Admin: <span class="bold">Pukul 8.00-20.00 WIB</span></p>
+        <p>Hari Kerja: <span class="bold">Senin - Sabtu</span></p>
+    </div>
+
+    <script>
+        // Array untuk nama hari dalam Bahasa Indonesia
+        var namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+
+        // Mendapatkan tanggal, hari, dan waktu saat ini
+        var waktuSekarang = new Date();
+        var hariSekarang = namaHari[waktuSekarang.getDay()];
+
+        // Mengonversi tanggal menjadi format yang diinginkan (misalnya, "DD-MM-YYYY")
+        var tanggalFormat = waktuSekarang.getDate() + '-' + (waktuSekarang.getMonth() + 1) + '-' + waktuSekarang.getFullYear();
+
+        // Mendapatkan jam, menit, dan detik saat ini
+        var jam = waktuSekarang.getHours();
+        var menit = waktuSekarang.getMinutes();
+        var detik = waktuSekarang.getSeconds();
+
+        // Format jam, menit, dan detik agar selalu dua digit
+        jam = (jam < 10 ? '0' : '') + jam;
+        menit = (menit < 10 ? '0' : '') + menit;
+        detik = (detik < 10 ? '0' : '') + detik;
+
+        // Menampilkan hari, tanggal, dan jam di dalam elemen dengan id "tanggalHari" dan "waktu"
+        document.getElementById('tanggalHari').innerText = 'Hari ini: ' + hariSekarang + ', ' + tanggalFormat;
+        document.getElementById('waktu').innerText = 'Waktu saat ini: ' + jam + ':' + menit + ':' + detik;
+
+        // Mendapatkan waktu saat ini dengan zona waktu Jakarta
+        function getCurrentDateTime() {
+            var now = new Date();
+            var options = { timeZone: 'Asia/Jakarta' };
+            return now.toLocaleString('id-ID', options);
+        }
+
+        // Menentukan status admin berdasarkan waktu
+        function getAdminStatus(dateTimeString) {
+            var date = new Date(dateTimeString);
+            var day = date.getDay();
+            var hours = date.getHours();
+
+            if (day === 0 || (day === 6 && hours >= 21) || (day === 1 && hours < 8)) { // Hari Minggu atau di luar jam kerja Senin
+                return 'Libur';
+            } else if (hours >= 8 && hours < 21 && day >= 1 && day <= 5) { // Senin - Jumat, jam 8 pagi - 9 malam
+                return 'Online';
+            } else { // Jam 9 malam - 8 pagi atau Sabtu setelah jam kerja
+                return 'Offline';
+            }
+        }
+
+        // Update informasi status admin setiap detik
+        function updateStatus() {
+            var dateTime = getCurrentDateTime();
+            var status = getAdminStatus(dateTime);
+
+            document.getElementById('statusAdmin').innerText = status;
+
+            // Penyesuaian warna teks berdasarkan status
+            if (status === 'Online') {
+                document.getElementById('statusAdmin').className = 'online';
+            } else if (status === 'Offline' || status === 'Libur') {
+                document.getElementById('statusAdmin').className = 'offline';
+            }
+
+            // Update setiap detik
+            setTimeout(updateStatus, 1000);
+        }
+
+        // Memulai pembaruan status
+        updateStatus();
+    </script>
+</body>
+</html>

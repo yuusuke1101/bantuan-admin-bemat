@@ -8,23 +8,21 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
         }
         .container {
-            background-color: #fff;
+            max-width: 400px;
+            margin: 20px auto;
             padding: 20px;
+            background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
         }
         .container h2 {
             margin-bottom: 20px;
             color: #333;
+            text-align: center;
         }
         .container label {
             display: block;
@@ -38,6 +36,7 @@
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-sizing: border-box;
         }
         .container button {
             width: 100%;
@@ -52,6 +51,16 @@
         .container button:hover {
             background-color: #218838;
         }
+        .container .back-link {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: #28a745;
+            text-decoration: none;
+        }
+        .container .back-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +72,7 @@
 
             <label for="banner">Banner/spanduk:</label>
             <select id="banner" name="banner" required>
-                <option value="memakai">pakai banner (Rp. 200.000)</option>
+                <option value="memakai">Pakai banner (Rp. 200.000)</option>
                 <option value="tidak_memakai">Tidak Memakai banner (Rp. 150.000)</option>
             </select>
 
@@ -85,7 +94,7 @@
             <label for="kelurahan">Kelurahan/Desa:</label>
             <input type="text" id="kelurahan" name="kelurahan" required>
 
-            <label for="alamat">dusun/RT/RW:</label>
+            <label for="alamat">Dusun/RT/RW:</label>
             <input type="text" id="alamat" name="alamat" required>
 
             <label for="jenisWarung">Jenis Warung:</label>
@@ -97,9 +106,25 @@
             </select>
             <input type="text" id="lainnya" name="lainnya" placeholder="Jenis Warung Lainnya" style="display:none;">
 
+            <label for="namaBank">Nama Bank:</label>
+            <select id="namaBank" name="namaBank" onchange="showBankOther()">
+                <option value="BRI">BRI</option>
+                <option value="BSI">BSI</option>
+                <option value="MANDIRI">MANDIRI</option>
+                <option value="BCA">BCA</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+            <input type="text" id="bankLainnya" name="bankLainnya" placeholder="Nama Bank Lainnya" style="display:none;">
+
+            <label for="nomorRekening">Nomor Rekening:</label>
+            <input type="text" id="nomorRekening" name="nomorRekening" required>
+
+            <label for="pemilikRekening">Pemilik Rekening:</label>
+            <input type="text" id="pemilikRekening" name="pemilikRekening" required>
+
             <button type="submit">Kirim</button>
         </form>
-         <a href="index.html" class="back-link">Kembali ke Halaman Utama</a>
+        <a href="index.html" class="back-link">Kembali ke Halaman Utama</a>
     </div>
 
     <script>
@@ -107,6 +132,12 @@
             var jenisWarung = document.getElementById("jenisWarung");
             var lainnya = document.getElementById("lainnya");
             lainnya.style.display = jenisWarung.value === "lainnya" ? "block" : "none";
+        }
+
+        function showBankOther() {
+            var namaBank = document.getElementById("namaBank");
+            var bankLainnya = document.getElementById("bankLainnya");
+            bankLainnya.style.display = namaBank.value === "lainnya" ? "block" : "none";
         }
 
         function sendToWhatsApp() {
@@ -123,6 +154,10 @@
                 var alamat = document.getElementById("alamat").value;
                 var jenisWarung = document.getElementById("jenisWarung").value;
                 var lainnya = document.getElementById("lainnya").value;
+                var namaBank = document.getElementById("namaBank").value;
+                var bankLainnya = document.getElementById("bankLainnya").value;
+                var nomorRekening = document.getElementById("nomorRekening").value;
+                var pemilikRekening = document.getElementById("pemilikRekening").value;
 
                 // Validasi jika jenis warung dipilih sebagai "lainnya", maka textbox lainnya harus diisi
                 if (jenisWarung === "lainnya" && lainnya.trim() === "") {
@@ -134,8 +169,18 @@
                     jenisWarung = lainnya;
                 }
 
+                // Validasi jika nama bank dipilih sebagai "lainnya", maka textbox bank lainnya harus diisi
+                if (namaBank === "lainnya" && bankLainnya.trim() === "") {
+                    alert("Mohon isi nama bank lainnya!");
+                    return; // Stop proses pengiriman formulir jika validasi tidak terpenuhi
+                }
+
+                if (namaBank === "lainnya") {
+                    namaBank = bankLainnya;
+                }
+
                 var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
-                var message = `*Pengajuan Daftar Warung Poin Bemat* %0A*Username Sponsor*: ${usernameSponsor} %0A*Memakai Banner*: ${banner === "memakai" ? "Ya" : "Tidak"} %0A*Nama Pemilik Warung*: ${namaPemilik} %0A*Nomor Whatsapp*: ${noWhatsapp} %0A*Alamat*: ${alamat}, ${kelurahan}, ${kecamatan}, ${kabupaten}, ${provinsi} %0A*Jenis Warung*: ${jenisWarung}`;
+                var message = `*Pengajuan Daftar Warung Poin Bemat* %0A*Username Sponsor*: ${usernameSponsor} %0A*Memakai Banner*: ${banner === "memakai" ? "Ya" : "Tidak"} %0A*Nama Pemilik Warung*: ${namaPemilik} %0A*Nomor Whatsapp*: ${noWhatsapp} %0A*Alamat*: ${alamat}, ${kelurahan}, ${kecamatan}, ${kabupaten}, ${provinsi} %0A*Jenis Warung*: ${jenisWarung} %0A*Nama Bank*: ${namaBank} %0A*Nomor Rekening*: ${nomorRekening} %0A*Pemilik Rekening*: ${pemilikRekening}`;
                 var url =  `https://wa.me/${phoneNumber}?text=${message}`;
                 window.open(url, '_blank');
             }

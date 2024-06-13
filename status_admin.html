@@ -54,26 +54,40 @@
         // Array untuk nama hari dalam Bahasa Indonesia
         var namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 
-        // Mendapatkan tanggal, hari, dan waktu saat ini
-        var waktuSekarang = new Date();
-        var hariSekarang = namaHari[waktuSekarang.getDay()];
+        // Fungsi untuk mendapatkan tanggal, hari, dan waktu saat ini
+        function updateTime() {
+            var waktuSekarang = new Date();
+            var hariSekarang = namaHari[waktuSekarang.getDay()];
 
-        // Mengonversi tanggal menjadi format yang diinginkan (misalnya, "DD-MM-YYYY")
-        var tanggalFormat = waktuSekarang.getDate() + '-' + (waktuSekarang.getMonth() + 1) + '-' + waktuSekarang.getFullYear();
+            // Mengonversi tanggal menjadi format yang diinginkan (misalnya, "DD-MM-YYYY")
+            var tanggalFormat = waktuSekarang.getDate() + '-' + (waktuSekarang.getMonth() + 1) + '-' + waktuSekarang.getFullYear();
 
-        // Mendapatkan jam, menit, dan detik saat ini
-        var jam = waktuSekarang.getHours();
-        var menit = waktuSekarang.getMinutes();
-        var detik = waktuSekarang.getSeconds();
+            // Mendapatkan jam, menit, dan detik saat ini
+            var jam = waktuSekarang.getHours();
+            var menit = waktuSekarang.getMinutes();
+            var detik = waktuSekarang.getSeconds();
 
-        // Format jam, menit, dan detik agar selalu dua digit
-        jam = (jam < 10 ? '0' : '') + jam;
-        menit = (menit < 10 ? '0' : '') + menit;
-        detik = (detik < 10 ? '0' : '') + detik;
+            // Format jam, menit, dan detik agar selalu dua digit
+            jam = (jam < 10 ? '0' : '') + jam;
+            menit = (menit < 10 ? '0' : '') + menit;
+            detik = (detik < 10 ? '0' : '') + detik;
 
-        // Menampilkan hari, tanggal, dan jam di dalam elemen dengan id "tanggalHari" dan "waktu"
-        document.getElementById('tanggalHari').innerText = 'Hari ini: ' + hariSekarang + ', ' + tanggalFormat;
-        document.getElementById('waktu').innerText = 'Waktu saat ini: ' + jam + ':' + menit + ':' + detik;
+            // Menampilkan hari, tanggal, dan jam di dalam elemen dengan id "tanggalHari" dan "waktu"
+            document.getElementById('tanggalHari').innerText = 'Hari ini: ' + hariSekarang + ', ' + tanggalFormat;
+            document.getElementById('waktu').innerText = 'Waktu saat ini: ' + jam + ':' + menit + ':' + detik;
+
+            // Menentukan status admin berdasarkan waktu
+            var status = getAdminStatus(waktuSekarang);
+
+            document.getElementById('statusAdmin').innerText = status;
+
+            // Penyesuaian warna teks berdasarkan status
+            if (status === 'Online') {
+                document.getElementById('statusAdmin').className = 'online';
+            } else if (status === 'Offline' || status === 'Libur') {
+                document.getElementById('statusAdmin').className = 'offline';
+            }
+        }
 
         // Mendapatkan waktu saat ini dengan zona waktu Jakarta
         function getCurrentDateTime() {
@@ -97,26 +111,11 @@
             }
         }
 
-        // Update informasi status admin setiap detik
-        function updateStatus() {
-            var dateTime = getCurrentDateTime();
-            var status = getAdminStatus(dateTime);
-
-            document.getElementById('statusAdmin').innerText = status;
-
-            // Penyesuaian warna teks berdasarkan status
-            if (status === 'Online') {
-                document.getElementById('statusAdmin').className = 'online';
-            } else if (status === 'Offline' || status === 'Libur') {
-                document.getElementById('statusAdmin').className = 'offline';
-            }
-
-            // Update setiap detik
-            setTimeout(updateStatus, 1000);
-        }
+        // Memperbarui informasi setiap detik
+        setInterval(updateTime, 1000);
 
         // Memulai pembaruan status
-        updateStatus();
+        updateTime();
     </script>
 </body>
 </html>

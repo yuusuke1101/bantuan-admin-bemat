@@ -122,6 +122,12 @@
             var jenisWarung = document.getElementById("jenisWarung").value;
             var lainnya = document.getElementById("lainnya").value;
 
+            // Validasi jika jenis warung dipilih sebagai "lainnya", maka textbox lainnya harus diisi
+            if (jenisWarung === "lainnya" && lainnya.trim() === "") {
+                alert("Mohon isi jenis warung lainnya!");
+                return; // Stop proses pengiriman formulir jika validasi tidak terpenuhi
+            }
+
             if (jenisWarung === "lainnya") {
                 jenisWarung = lainnya;
             }

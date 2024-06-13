@@ -89,9 +89,18 @@
         var currentDay = new Date().getDay();
         document.getElementById("currentDay").innerText = days[currentDay];
 
-        // Mendapatkan jam saat ini dengan format waktu Jakarta (GMT+7)
-        var currentTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Jakarta", hour: 'numeric', minute:'numeric', hour12: false});
-        document.getElementById("currentTime").innerText = currentTime;
+        // Fungsi untuk mengatur format waktu
+        function updateTime() {
+            var currentDate = new Date();
+            var currentDay = currentDate.getDay();
+            var currentTime = currentDate.toLocaleString("en-US", {timeZone: "Asia/Jakarta", hour: 'numeric', minute:'numeric', second: 'numeric', hour12: false});
+            document.getElementById("currentDay").innerText = days[currentDay];
+            document.getElementById("currentTime").innerText = currentTime;
+            setTimeout(updateTime, 1000); // Mengupdate setiap detik
+        }
+
+        // Panggil fungsi untuk pertama kali
+        updateTime();
 
         // Inisialisasi status default dan sesi default
         var status = "Belum Diproses";

@@ -55,7 +55,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Formulir Notifikasi Akun</h2>
+        <h2>Formulir Lupa Password Akun Mitra</h2>
         <form id="usernameForm" onsubmit="sendToWhatsApp(); return false;">
             <label for="username">Username Akun:</label>
             <input type="text" id="username" name="username" required>
@@ -69,7 +69,7 @@
         function sendToWhatsApp() {
             var username = document.getElementById("username").value;
             var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
-            var message = `Notifikasi ulang %0AUsername Akun: ${username}`;
+            var message = `*Lupa password* %0AUsername Akun: ${username}`;
             var url =  `https://wa.me/${phoneNumber}?text=${message}`;
             window.open(url, '_blank');
         }

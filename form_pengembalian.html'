@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pengajuan Edit Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #218838;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Formulir Pengajuan Edit Data</h2>
+        <form id="editDataForm" onsubmit="sendToWhatsApp(); return false;">
+            <label for="username">Username Akun:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="akunPengembalian">Username Akun Pengembalian:</label>
+            <input type="text" id="akunPengembalian" name="akunPengembalian" required>
+
+            <label for="namaPemilikPengembalian">Nama Pemilik Akun Pengembalian:</label>
+            <input type="text" id="namaPemilikPengembalian" name="namaPemilikPengembalian" required>
+
+            <button type="submit">Kirim</button>
+        </form>
+        <a href="index.html" class="back-link">Kembali ke Halaman Utama</a>
+    </div>
+
+    <script>
+        function sendToWhatsApp() {
+            var username = document.getElementById("username").value;
+            var akunPengembalian = document.getElementById("akunPengembalian").value;
+            var namaPemilikPengembalian = document.getElementById("namaPemilikPengembalian").value;
+
+            var phoneNumber = "6283166570663"; // Prefix Indonesia: +62
+            var message = `*Pengajuan Edit Data* %0A*Username Akun*: ${username} %0A*Username Akun Pengembalian*: ${akunPengembalian} %0A*Nama Pemilik Akun Pengembalian*: ${namaPemilikPengembalian}`;
+            var url =  `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

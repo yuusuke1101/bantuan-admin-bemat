@@ -12,11 +12,11 @@
             margin-top: 50px;
         }
         .container {
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
@@ -35,9 +35,14 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin: 10px 0;
         }
         button:hover {
             background-color: #45a049;
+        }
+        .note {
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
@@ -45,6 +50,7 @@
     <div class="container">
         <h1>Cashback Information</h1>
         <p>Jika akumulasi poin Anda sudah mencapai 2000 poin, cashback 100% atau pengembalian modal akan otomatis dikirim ke saldo belanja Anda.</p>
+        <p class="note">*Catatan: Pengembalian modal hanya berlaku untuk transaksi tertentu.</p>
         
         <!-- Tombol untuk menuju halaman formulir pengisian data -->
         <button onclick="location.href='form_pengembalian.html'">Isi Data Pengembalian</button>

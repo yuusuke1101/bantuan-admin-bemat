@@ -1,54 +1,56 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Sedang Dikerjakan</title>
+    <title>Cashback Information</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin-top: 50px;
         }
         .container {
+            max-width: 600px;
+            margin: 0 auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .container h2 {
-            margin-bottom: 20px;
+        h1 {
             color: #333;
         }
-        .container p {
-            color: #555;
+        p {
+            color: #666;
             margin-bottom: 20px;
         }
-        .container a.button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #28a745;
+        button {
+            background-color: #4caf50;
             color: #fff;
-            text-decoration: none;
+            border: none;
+            padding: 10px 20px;
+            text-transform: uppercase;
             border-radius: 5px;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .container a.button:hover {
-            background-color: #218838;
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Halaman Sedang Dikerjakan</h2>
-        <p>Mohon maaf, halaman ini sedang dalam tahap perbaikan.</p>
-        <a href="index.html" class="button">Kembali ke Halaman Utama</a>
+        <h1>Cashback Information</h1>
+        <p>Jika akumulasi poin Anda sudah mencapai 2000 poin, cashback 100% atau pengembalian modal akan otomatis dikirim ke saldo belanja Anda.</p>
+        
+        <!-- Tombol untuk menuju halaman formulir pengisian data -->
+        <button onclick="location.href='form_pengembalian.html'">Isi Data Pengembalian</button>
+        
+        <!-- Tombol untuk kembali ke halaman utama -->
+        <button onclick="location.href='index.html'">Kembali ke Halaman Utama</button>
     </div>
 </body>
 </html>

@@ -154,9 +154,9 @@
             var day = date.getDay();
             var hours = date.getHours();
 
-            if (day === 0 || (day === 6 && hours >= 21) || (day === 1 && hours < 8)) { // Hari Minggu atau di luar jam kerja Senin
+            if (day === 7 || (day === 6 && hours >= 21) || (day === 1 && hours < 8)) { // Hari Minggu atau di luar jam kerja Senin
                 return 'Libur';
-            } else if (hours >= 8 && hours < 21 && day >= 1 && day <= 5) { // Senin - Jumat, jam 8 pagi - 9 malam
+            } else if (hours >= 8 && hours < 21 && day >= 1 && day <= 6) { // Senin - Jumat, jam 8 pagi - 9 malam
                 return 'Online';
             } else { // Jam 9 malam - 8 pagi atau Sabtu setelah jam kerja
                 return 'Offline';

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panduan Menutup Poin</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  h1 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+  }
+  ol {
+    list-style: none;
+    counter-reset: steps;
+    padding-left: 0;
+  }
+  ol li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+  }
+  ol li:before {
+    content: counter(steps);
+    counter-increment: steps;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #007bff;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+  }
+		.button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #FF0000;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+</style>
+</head>
+<body>
+  <h1>Panduan Menutup Poin</h1>
+  <ol>
+    <li><strong>Persiapkan Stok Poin:</strong> Pastikan Anda memiliki jumlah poin yang cukup untuk melakukan transaksi menutup poin.</li>
+    <li><strong>Periksa nilai jumlah kewajiban tupo:</strong> Lakukan pengecekan terhadap jumlah poin yang dibutuhkan untuk menutup poin.</li>
+    <li><strong>Buka Menu:</strong> Klik ikon garis tiga yang terletak di pojok kiri atas layar untuk membuka pilihan menu.</li>
+    <li><strong>Pilih Transaksi Poin:</strong> Dari menu yang muncul, pilih opsi "Transaksi Poin".</li>
+    <li><strong>Pilih Tujuan Transaksi:</strong> Pilih opsi "Transaksi Poin ke Warung".</li>
+    <li><strong>Masukkan Jumlah Poin:</strong> Isikan jumlah poin yang dibutuhkan untuk menutup poin tersebut.</li>
+    <li><strong>Tentukan Tujuan:</strong> Ketikkan user id warung yang dituju untuk menutup poin.</li>
+    <li><strong>Konfirmasi Identitas:</strong> Masukkan PIN Anda sebagai langkah konfirmasi keamanan.</li>
+    <li><strong>Kirim poin:</strong> Klik tombol "Kirim" untuk mengirimkan poin.</li>
+    <li><strong>Tunggu Konfirmasi:</strong> Tunggu hingga warung mengklaim poin yang telah Anda kirimkan.</li>
+    <li><strong>Status:</strong> Setelah warung berhasil mengklaim poin, nilai poin mingguan Anda akan bertambah sesuai dengan jumlah poin yang Anda kirimkan.</li>
+
+    <a href="tutorial.html" class="button">Kembali</a>
+  </ol>
+</body>
+</html>

@@ -152,7 +152,7 @@
             }
 
             var phoneNumber = "6283166570663"; // Nomor WhatsApp tujuan
-            var message = `*Pengajuan Edit Data Akun Mitra* %0A*Username Akun*: ${username} %0A*Nama Pemilik Akun*: ${namaPemilik} %0A*No. Whatsapp*: ${noWhatsapp} %0A*NIK*: ${nik} %0A*Nama Bank*: ${namaBank} %0A*No. Rekening*: ${noRekening} %0A*Atas Nama*: ${atasNama} %0A*Akun Pengembalian - Username*: ${akunPengembalian} %0A*Akun Pengembalian - Nama Pemilik*: ${namaPemilikPengembalian}`;
+            var message = `*_Pengajuan Edit Data Akun Mitra_* %0A%0A*Username Akun*: ${username} %0A*Nama Pemilik Akun*: ${namaPemilik} %0A*No. Whatsapp*: ${noWhatsapp} %0A*NIK*: ${nik} %0A%0A*Nama Bank*: ${namaBank} %0A*No. Rekening*: ${noRekening} %0A*Atas Nama*: ${atasNama} %0A%0A*Akun Pengembalian - Username*: ${akunPengembalian} %0A*Akun Pengembalian - Nama Pemilik*: ${namaPemilikPengembalian}`;
             var url =  `https://wa.me/${phoneNumber}?text=${message}`;
             window.open(url, '_blank');
         }

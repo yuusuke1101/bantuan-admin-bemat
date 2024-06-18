@@ -74,16 +74,16 @@
         <h2>Formulir Pengajuan Edit Data Akun Mitra</h2>
         <form id="editDataForm" onsubmit="sendToWhatsApp(); return false;">
             <label for="username">Username Akun:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" placeholder="Contoh: Dadang01" required>
 
             <label for="namaPemilik">Nama:</label>
-            <input type="text" id="namaPemilik" name="namaPemilik" required>
+            <input type="text" id="namaPemilik" name="namaPemilik" placeholder=" dadang sudadang" required>
 
             <label for="noWhatsapp">No.Whatsapp:</label>
-            <input type="tel" id="noWhatsapp" name="noWhatsapp" required>
+            <input type="tel" id="noWhatsapp" name="noWhatsapp" placeholder="08xxxxx" required>
 
             <label for="nik">NIK:</label>
-            <input type="tel" id="nik" name="nik" required>
+            <input type="tel" id="nik" name="nik" placeholder="NIK pada KTP anda" required>
 
             <label for="namaBank">Nama Bank untuk Withdraw:</label>
             <select id="namaBank" name="namaBank" onchange="checkBankSelection()" required>
@@ -97,16 +97,16 @@
             <input type="text" id="namaBankLainnya" name="namaBankLainnya" placeholder="Masukkan Nama Bank" style="display: none;">
 
             <label for="noRekening">Nomor Rekening:</label>
-            <input type="number" id="noRekening" name="noRekening" required>
+            <input type="number" id="noRekening" name="noRekening" placeholder="1234567890" required>
 
             <label for="atasNama">Nama Pemilik Rekening:</label>
-            <input type="text" id="atasNama" name="atasNama" required>
+            <input type="text" id="atasNama" name="atasNama" placeholder="Dadang sudadang" required>
 
             <label for="akunPengembalian">Akun Pengembalian - Username:</label>
-            <input type="text" id="akunPengembalian" name="akunPengembalian" required>
+            <input type="text" id="akunPengembalian" name="akunPengembalian" placeholder="DADANG03" required>
 
             <label for="namaPemilikPengembalian">Akun Pengembalian - Nama Pemilik:</label>
-            <input type="text" id="namaPemilikPengembalian" name="namaPemilikPengembalian" required>
+            <input type="text" id="namaPemilikPengembalian" name="namaPemilikPengembalian" placeholder="dadang sudadang" required>
             
             <button type="submit">Kirim</button>
 			<a href="index.html" class="button">Kembali ke Halaman Utama</a>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pengajuan Pendaftaran Warung Poin Bemat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 10px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+        .container h2 {
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+        }
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 14px;
+        }
+        .container input, .container select, .container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #218838;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff0000;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Data Warung Poin Bemat</h2>
+        <form id="pendaftaranForm" onsubmit="sendToWhatsApp(); return false;">
+            <label for="idSponsor">ID Warung:</label>
+            <input type="text" id="idSponsor" name="idSponsor" required>
+
+            <label for="namaPemilik">Nama Pemilik Warung:</label>
+            <input type="text" id="namaPemilik" name="namaPemilik" required>
+
+            <label for="noWhatsapp">Nomor WhatsApp:</label>
+            <input type="number" id="noWhatsapp" name="noWhatsapp" required>
+
+            <label for="jenisWarung">Jenis Warung:</label>
+            <select id="jenisWarung" name="jenisWarung" onchange="checkWarungSelection()" required>
+                <option value="">Pilih Jenis Warung</option>
+                <option value="Sembako">Sembako</option>
+                <option value="Elektronik">Elektronik</option>
+                <option value="Bengkel">Bengkel</option>
+                <option value="Rumah Makan">Rumah Makan</option>
+                <option value="ATK">ATK</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+            <input type="text" id="jenisWarungLainnya" name="jenisWarungLainnya" placeholder="Masukkan Jenis Warung" style="display: none;">
+
+            <label for="provinsi">Provinsi:</label>
+            <input type="text" id="provinsi" name="provinsi" required>
+
+            <label for="kabupaten">Kabupaten:</label>
+            <input type="text" id="kabupaten" name="kabupaten" required>
+
+            <label for="kecamatan">Kecamatan:</label>
+            <input type="text" id="kecamatan" name="kecamatan" required>
+
+            <label for="kelurahan">Kelurahan/Desa:</label>
+            <input type="text" id="kelurahan" name="kelurahan" required>
+
+            <label for="alamatLengkap">Alamat Lengkap:</label>
+            <textarea id="alamatLengkap" name="alamatLengkap" rows="2" required></textarea>
+
+            <label for="namaBank">Nama Bank untuk Withdraw:</label>
+            <select id="namaBank" name="namaBank" onchange="checkBankSelection()" required>
+                <option value="">Pilih Nama Bank</option>
+                <option value="BRI">BRI</option>
+                <option value="MANDIRI">Mandiri</option>
+                <option value="BCA">BCA</option>
+                <option value="BSI">BSI</option>
+                <option value="LAINNYA">Lainnya</option>
+            </select>
+            <input type="text" id="namaBankLainnya" name="namaBankLainnya" placeholder="Masukkan Nama Bank" style="display: none;">
+
+            <label for="noRekening">Nomor Rekening:</label>
+            <input type="number" id="noRekening" name="noRekening" required>
+
+            <label for="atasNama">Nama Pemilik Rekening:</label>
+            <input type="text" id="atasNama" name="atasNama" required>
+            
+            <button type="submit">Kirim</button>
+        </form>
+        <a href="index.html" class="button">Kembali ke Halaman Utama</a>
+    </div>
+
+    <script>
+        function checkWarungSelection() {
+            var selectedValue = document.getElementById("jenisWarung").value;
+            var jenisWarungLainnyaField = document.getElementById("jenisWarungLainnya");
+
+            if (selectedValue === "Lainnya") {
+                jenisWarungLainnyaField.style.display = "block";
+                jenisWarungLainnyaField.setAttribute("required", true);
+            } else {
+                jenisWarungLainnyaField.style.display = "none";
+                jenisWarungLainnyaField.removeAttribute("required");
+            }
+        }
+
+        function checkBankSelection() {
+            var selectedValue = document.getElementById("namaBank").value;
+            var namaBankLainnyaField = document.getElementById("namaBankLainnya");
+
+            if (selectedValue === "LAINNYA") {
+                namaBankLainnyaField.style.display = "block";
+                namaBankLainnyaField.setAttribute("required", true);
+            } else {
+                namaBankLainnyaField.style.display = "none";
+                namaBankLainnyaField.removeAttribute("required");
+            }
+        }
+
+        function confirmSubmit() {
+            return confirm("Apakah Anda yakin akan mengirimkan pengajuan ini?");
+        }
+
+        function sendToWhatsApp() {
+            if (!confirmSubmit()) {
+                return;
+            }
+
+            var idSponsor = document.getElementById("idSponsor").value;
+            var namaPemilik = document.getElementById("namaPemilik").value;
+            var noWhatsapp = document.getElementById("noWhatsapp").value;
+            var jenisWarung = document.getElementById("jenisWarung").value;
+            var jenisWarungLainnya = document.getElementById("jenisWarungLainnya").value;
+            var provinsi = document.getElementById("provinsi").value;
+            var kabupaten = document.getElementById("kabupaten").value;
+            var kecamatan = document.getElementById("kecamatan").value;
+            var kelurahan = document.getElementById("kelurahan").value;
+            var alamatLengkap = document.getElementById("alamatLengkap").value;
+            var namaBank = document.getElementById("namaBank").value;
+            var namaBankLainnya = document.getElementById("namaBankLainnya").value;
+            var noRekening = document.getElementById("noRekening").value;
+            var atasNama = document.getElementById("atasNama").value;
+
+            if (jenisWarung === "Lainnya") {
+                jenisWarung = jenisWarungLainnya;
+            }
+
+            if (namaBank === "LAINNYA") {
+                namaBank = namaBankLainnya;
+            }
+
+            var phoneNumber = "6283166570663"; // Nomor WhatsApp tujuan
+            var message = `*Pengajuan Edit Warung Poin Bemat* %0A%0A*ID Warung*: ${idSponsor} %0A*Nama Pemilik Warung*: ${namaPemilik} %0A*No. Whatsapp*: ${noWhatsapp} %0A*Jenis Warung*: ${jenisWarung} %0A%0A*Alamat:* %0A*Provinsi*: ${provinsi} %0A*Kabupaten:* ${kabupaten} %0A*Kecamatan:* ${kecamatan} %0A*Kelurahan/Desa:* ${kelurahan} %0A*Alamat lengkap:*: ${alamatLengkap} %0A%0A*DATA BANK* %0A*Nama Bank:* ${namaBank} %0A*No. Rekening*: ${noRekening} %0A*Atas Nama*: ${atasNama}`;
+            var url = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+    </html>

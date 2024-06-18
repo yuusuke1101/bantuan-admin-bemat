@@ -82,13 +82,13 @@
         <h2>Edit Data Warung Poin Bemat</h2>
         <form id="pendaftaranForm" onsubmit="sendToWhatsApp(); return false;">
             <label for="idSponsor">ID Warung:</label>
-            <input type="text" id="idSponsor" name="idSponsor" required>
+            <input type="text" id="idSponsor" name="idSponsor" placeholder="Contoh: WARUNG9999" required>
 
             <label for="namaPemilik">Nama Pemilik Warung:</label>
-            <input type="text" id="namaPemilik" name="namaPemilik" required>
+            <input type="text" id="namaPemilik" name="namaPemilik" placeholder="Contoh: BUDI SANTOSO" required>
 
             <label for="noWhatsapp">Nomor WhatsApp:</label>
-            <input type="number" id="noWhatsapp" name="noWhatsapp" required>
+            <input type="number" id="noWhatsapp" name="noWhatsapp" placeholder="Contoh: 081234567890" required>
 
             <label for="jenisWarung">Jenis Warung:</label>
             <select id="jenisWarung" name="jenisWarung" onchange="checkWarungSelection()" required>
@@ -103,19 +103,19 @@
             <input type="text" id="jenisWarungLainnya" name="jenisWarungLainnya" placeholder="Masukkan Jenis Warung" style="display: none;">
 
             <label for="provinsi">Provinsi:</label>
-            <input type="text" id="provinsi" name="provinsi" required>
+            <input type="text" id="provinsi" name="provinsi" placeholder=" Contoh : Lampung" required>
 
             <label for="kabupaten">Kabupaten:</label>
-            <input type="text" id="kabupaten" name="kabupaten" required>
+            <input type="text" id="kabupaten" name="kabupaten" placeholder=" contoh : Pringsewu" required>
 
             <label for="kecamatan">Kecamatan:</label>
-            <input type="text" id="kecamatan" name="kecamatan" required>
+            <input type="text" id="kecamatan" name="kecamatan" placeholder=" contoh : Adiluwih" required>
 
             <label for="kelurahan">Kelurahan/Desa:</label>
-            <input type="text" id="kelurahan" name="kelurahan" required>
+            <input type="text" id="kelurahan" name="kelurahan" placeholder=" contoh : Bandung Baru" required>
 
             <label for="alamatLengkap">Alamat Lengkap:</label>
-            <textarea id="alamatLengkap" name="alamatLengkap" rows="2" required></textarea>
+            <textarea id="alamatLengkap" name="alamatLengkap" placeholder=" contoh : Jl. Mawar melati No.2 Gang mawar 2 Rt01 Rw 02" rows="2" required></textarea>
 
             <label for="namaBank">Nama Bank untuk Withdraw:</label>
             <select id="namaBank" name="namaBank" onchange="checkBankSelection()" required>
@@ -129,10 +129,10 @@
             <input type="text" id="namaBankLainnya" name="namaBankLainnya" placeholder="Masukkan Nama Bank" style="display: none;">
 
             <label for="noRekening">Nomor Rekening:</label>
-            <input type="number" id="noRekening" name="noRekening" required>
+            <input type="number" id="noRekening" name="noRekening" placeholder="contoh:123456789" required>
 
             <label for="atasNama">Nama Pemilik Rekening:</label>
-            <input type="text" id="atasNama" name="atasNama" required>
+            <input type="text" id="atasNama" name="atasNama" placeholder="contoh: Budi Santoso" required>
             
             <button type="submit">Kirim</button>
         </form>
